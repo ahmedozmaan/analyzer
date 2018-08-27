@@ -1,9 +1,12 @@
 import requests
 import json
+import time
 
 class Cobas411:
 
     def __init__(self):
+        self.device_id = "1"
+        self.device_name = "COBAS 411"
         self
 
     def message_parser(self, data):
@@ -13,117 +16,169 @@ class Cobas411:
     def on_header(self, data):
         message = self.message_parser(data)
         sender = message[4].split("^")
-        sender_name = sender[0]
-        sender_serial_no = sender[1]
-        sender_software_version = sender[2]
-        sender_range_boundry = sender[3]
-
-        processing_id = message[11]
-        date_and_time = message[13]
+        header_info = {
+            "device_name": sender[0],
+            "device_software_version": sender[1],
+            "instruction": message[10],
+            "processing_id": message[11],
+            "version_no": message[12]
+        }
         
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"HEADER",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": header_info
         }
         self.restful("POST",json_data)
         
     def on_patient(self, data):
         message = self.message_parser(data)
+        patient_info = {
+            "sequence_no": message[1]
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"PATIENT",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": patient_info
         }
         self.restful("POST",json_data)
-
+    
     def on_order(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        _specimen_id = message[2]
-        instrument_specimen_id = message[3].split("^")
-        _instrument_sample_no = instrument_specimen_id[0]
-        _instrument_rack_id = instrument_specimen_id[1]
-        _instrument_position_no = instrument_specimen_id[2]
-        _instrument_operator_id = instrument_specimen_id[3]
-        _instrument_data_carrier_type = instrument_specimen_id[4]
-
-        _priority = message[5]
-        _action_code = message[11]
-        _data_and_time = message[14]
-
+        order_info = {
+            "sequence_no": message[1],
+            "specimen_id": message[2],
+            "instrument_specimen_id":{
+                "sequence_no": "",
+                "carrier_no": "",
+                "position_no": "",
+                "sample_type": "",
+                "container_type": "",
+            },
+            "universal_test_id": message[4],
+            "priority": message[5],
+            "specimen_datetime": message[7],
+            "action_code": message[11],
+            "specimen_descriptor": len(message) > 15 and message[15],
+            "result_datetime": len(message) > 22 and message[22],
+            "record_type": len(message) > 25 and message[25]
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"ORDER",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": order_info
         }
         self.restful("POST",json_data)
 
     def on_result(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        universal_test_id = message[2].split("^")
-        _universal_test_test_no = universal_test_id[0]
-        _universal_test_test_code = universal_test_id[1]
-        data_measurement = message[3].split("^")
-        # _data_measurement_result = data_measurement[0]
-        # _data_arbitrary_value = data_measurement[1]
-        _unit = message[4]
-        _operator_id = message[10]
+        result_type = {
+            "sequence_no":message[1],
+            "universal_test_id": message[2],
+            "measurement_value": message[3],
+            "unit": message[4],
+            "reference_range": message[5],
+            "result_abnormal_flags": message[6],
+            "result_status": message[8],
+            "operator": message[10],
+            "test_start_datetime": len(message) > 11 and message[11],
+            "test_complete_datetime": len(message) > 12 and message[12]
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"RESULT",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": result_type
         }
         self.restful("POST",json_data)
 
     def on_comment(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        _comment_source = message[2]
-        _comment_text = message[3]
-        _comment_type = message[4]
+        comment_info = {
+            "sequence_no":"",
+            "comment_source":"",
+            "comment_text":"",
+            "comment_type":"",
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"COMMENT",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": comment_info
         }
         self.restful("POST",json_data)
 
     def on_manufacturer(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        _record_type = message[2]
-        universal_test_id = message[3].split("^")
-        # _universal_test_id_no = universal_test_id[0]
-        # _universal_test_id_code = universal_test_id[1]
-        _test_frequency = message[4]
-        _raw_result_value = message[5]
+        manufacturer_info = {
+
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"MANUFACTURER",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": manufacturer_info
         }
         self.restful("POST",json_data)
+
+    def checksum(self, message):
+        sum_value = 16 #CR + ETX
+        for i in message:
+            sum_value = sum_value + ord(i)
+            str_to_hex = hex(sum_value)
+        return str_to_hex[-2:].upper()
 
     def on_request(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        record_type_sub_id = message[2].split("^")
-        _record_type_sub_id_all = record_type_sub_id[1]
+        request_info = {
+            "sequence_no": message[1],
+            "start_range_id":{
+                "sample_id":"",
+                "sequence_no":"",
+                "carrier_no":"",
+                "position_no":"",
+                "sample_type":"",
+                "container_type":""
+            },
+            "universal_test_id":"",
+            "request_information_status_code":""
+        }
+        machine_ask = {
+            "device_id": self.device_id,
+            "device_flag": 1,
+            "query_info": request_info
+        }
         json_data = {
-            "device_id":"1",
+            "device_id":self.device_id,
             "record_type":"REQUEST",
-            "raw_message": data
+            "raw_message": data,
+            "message_info":request_info
         }
         self.restful("POST",json_data)
+        self.restful("POST", machine_ask, 'request')
 
-    def restful(self, method, json_data):
-        url = "http://localhost:8022/analyzer/header"
-        if(method=="POST"):
+    def check_request(self):
+        print("Info : Host is checking if any request required by this machine")
+        params = {
+            "device_id": self.device_id
+        }
+        response = self.restful("GET", params, "request")
+        time.sleep(4)
+        print("INFO : Checking done")
+        print(json.loads(response.text))
+
+    def restful(self, method, json_data, route = "record"):
+        url = "http://localhost:8022/analyzer/{}".format(route)
+        response = ""
+        if method == "POST":
             requests.post(url, data=json.dumps(json_data))
+        if method == "PUT":
+            requests.put(url, data=json.dumps(json_data))
+        if method == "GET":
+            params = "?device_id={}".format(json_data["device_id"])
+            url = url + '?device-id={}'.format(params)
+            response = requests.get(url)
+        return response

@@ -25,9 +25,18 @@ dummy_messages = (
     "[EOT]"
 )
 
+dummy_messages_2 = (
+    "[ENQ]"
+    "[STX]1H|\^&|||cobas-e411^1|||||host|TSREQ^REAL|P|1[CR][EXT]00[CR][LF]",
+    "[STX]2Q|1|^^000004^40^0^5^^S1^SC||ALL||||||||O[CR][EXT]00[CR][LF]",
+    "[STX]L|1|N[CR][EXT]00[CR][LF]",
+    "[EOT]"
+)
+
+
 astm = Astm("cobas411")
 run = 0
-while run < len(dummy_messages):
-    astm.deviceSend(dummy_messages[run])
+while run < len(dummy_messages_2):
+    astm.deviceSend(dummy_messages_2[run])
     run = run + 1
     time.sleep(1)

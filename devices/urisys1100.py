@@ -13,18 +13,20 @@ class Urisys1100:
 
     def on_header(self, data):
         message = self.message_parser(data)
-        sender = message[4].split("^")
-        _sender_device_type = sender[0]
-        _sender_device_id = sender[1]
-        _sender_software_version = sender[2]
-        _sender_limit_table_type = sender[3]
-
-        _processing_id = message[11]
-        _date_and_time = message[13]
+        device = message[4].split("^")
+        header_info = {
+            "device_type": device[0],
+            "device_id": device[1],
+            "device_software_version": device[2],
+            "limit_table_type": device[3],
+            "message_date_time": message[13]
+        }
+        
         json_data = {
             "device_id":"2",
             "record_type":"HEADER",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": header_info
         }
         self.restful("POST",json_data)
 
@@ -40,60 +42,53 @@ class Urisys1100:
         self.restful("POST",json_data)
 
     def on_order(self, data):
-        """
-        required fields: 1,2,3,4,5,10,11
-        """
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        _specimen_id = message[2]
         instrument_specimen_id = message[3].split("^")
-        _instrument_sample_no = instrument_specimen_id[0]
-        _instrument_rack_id = instrument_specimen_id[1]
-        _instrument_position_no = instrument_specimen_id[2]
-        # _instrument_operator_id = instrument_specimen_id[3]
-        # _instrument_data_carrier_type = instrument_specimen_id[4]
-
-        _setted_result = message[4]
-        _last_menu_calibrate = message[9]
-        _operator_code = message[10]
+        order_info = {
+            "patient_identifier": message[2],
+            "measurement_no": instrument_specimen_id[0],
+            "serial_no": instrument_specimen_id[1],
+            "strip_type_setting": instrument_specimen_id[2],
+            "type_of_measurement": message[4],
+            "date_time_test": message[14]
+        }
         json_data = {
             "device_id":"2",
             "record_type":"ORDER",
-            "raw_message": data
+            "raw_message": data,
+            "message_info" : order_info
         }
         self.restful("POST",json_data)
 
     def on_result(self, data):
-        """
-        required fields: 1,2,3,4,5
-        """
         message = self.message_parser(data)
-        _record_type = message[0]
-        _record_serial_no = message[1]
-        _field_3 = message[2]
-        field_4 = message[3].split("^")
-        _field_4_1 = field_4[0]
-        # _field_4_2 = field_4[1]
-        _field_5 = message[4]
+        result_info = {
+            "record_serial_number": message[1],
+            "parameter_serial_number": message[2],
+            "result_setted_system": message[3],
+            "setted_result_unit": message[4],
+            "date_last_menu_calibrate": message[9],
+            "operator_code": message[10]
+        }
         json_data = {
             "device_id":"2",
             "record_type":"RESULT",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": result_info
         }
         self.restful("POST",json_data)
 
     def on_comment(self, data):
         message = self.message_parser(data)
-        _record_type = message[0]
-        _seq_no = message[1]
-        _comment_source = message[2]
-        _comment_text = message[3]
-        _comment_type = message[4]
+        comment_data = {
+            "record_serial_no": message[1],
+            "flag": message[3]
+        }
         json_data = {
             "device_id":"2",
             "record_type":"COMMENT",
-            "raw_message": data
+            "raw_message": data,
+            "message_info": comment_data
         }
         self.restful("POST",json_data)
 
@@ -126,6 +121,13 @@ class Urisys1100:
             "raw_message": data
         }
         self.restful("POST",json_data)
+    
+    def checksum(self, message):
+        sum_value = 16 #CR + ETX
+        for i in message:
+            sum_value = sum_value + ord(i)
+            str_to_hex = hex(sum_value)
+        return str_to_hex[-2:].upper()
 
     def restful(self, method, json_data):
         url = "http://localhost:8022/analyzer/header"

@@ -1,11 +1,11 @@
 ====START OF TRANSMISSION====
 
-Device: [ENQ]
+Device: [ENQ] 
 Control Character: ENQ
 Host: ACK
 -----
 
-Device: [STX]1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200[CR][ETX]F8[CR][LF]
+Device: [STX]1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200[CR][ETX]F8[CR][LF] 
 Control Character: STX
 Clean Message: 1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200
 	Tag No 1
@@ -29,7 +29,7 @@ Clean Message: 1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200
 Host: ACK
 -----
 
-Device: [STX]2P|1[CR][ETX]3F[CR][LF]
+Device: [STX]2P|1[CR][ETX]3F[CR][LF] 
 Control Character: STX
 Clean Message: 2P|1
 	Tag No 2
@@ -41,7 +41,7 @@ Clean Message: 2P|1
 Host: ACK
 -----
 
-Device: [STX]3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||20090116184100[CR][ETX]00[CR][LF]
+Device: [STX]3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||20090116184100[CR][ETX]00[CR][LF] 
 Control Character: STX
 Clean Message: 3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||20090116184100
 	Tag No 3
@@ -66,7 +66,7 @@ Clean Message: 3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||2009011618410
 Host: ACK
 -----
 
-Device: [STX]4R|01|01^·SG|1.020|gcm3|||||20090116|LNorman^A[CR][ETX]BB[CR][LF]
+Device: [STX]4R|01|01^·SG|1.020|gcm3|||||20090116|LNorman^A[CR][ETX]BB[CR][LF] 
 Control Character: STX
 Clean Message: 4R|01|01^·SG|1.020|gcm3|||||20090116|LNorman^A
 	Tag No 4
@@ -87,7 +87,7 @@ Clean Message: 4R|01|01^·SG|1.020|gcm3|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]5R|02|02^·pH|····7||||||20090116|LNorman^A[CR][ETX]09[CR][LF]
+Device: [STX]5R|02|02^·pH|····7||||||20090116|LNorman^A[CR][ETX]09[CR][LF] 
 Control Character: STX
 Clean Message: 5R|02|02^·pH|····7||||||20090116|LNorman^A
 	Tag No 5
@@ -108,7 +108,7 @@ Clean Message: 5R|02|02^·pH|····7||||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]6R|03|03^LEU|··neg^··neg|·Leu/ul|||||20090116|LNorman^A[CR][ETX]0B[CR][LF]
+Device: [STX]6R|03|03^LEU|··neg^··neg|·Leu/ul|||||20090116|LNorman^A[CR][ETX]0B[CR][LF] 
 Control Character: STX
 Clean Message: 6R|03|03^LEU|··neg^··neg|·Leu/ul|||||20090116|LNorman^A
 	Tag No 6
@@ -129,7 +129,7 @@ Clean Message: 6R|03|03^LEU|··neg^··neg|·Leu/ul|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]7R|04|04^NIT|··neg^··neg||||||20090116|LNorman^A[CR][ETX]BD[CR][LF]
+Device: [STX]7R|04|04^NIT|··neg^··neg||||||20090116|LNorman^A[CR][ETX]BD[CR][LF] 
 Control Character: STX
 Clean Message: 7R|04|04^NIT|··neg^··neg||||||20090116|LNorman^A
 	Tag No 7
@@ -150,7 +150,7 @@ Clean Message: 7R|04|04^NIT|··neg^··neg||||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]0R|05|05^PRO|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]D1[CR][LF]
+Device: [STX]0R|05|05^PRO|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]D1[CR][LF] 
 Control Character: STX
 Clean Message: 0R|05|05^PRO|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 	Tag No 0
@@ -171,7 +171,7 @@ Clean Message: 0R|05|05^PRO|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]1R|06|06^GLU|·norm^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]2D[CR][LF]
+Device: [STX]1R|06|06^GLU|·norm^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]2D[CR][LF] 
 Control Character: STX
 Clean Message: 1R|06|06^GLU|·norm^··neg|·mg/dl·|||||20090116|LNorman^A
 	Tag No 1
@@ -192,7 +192,7 @@ Clean Message: 1R|06|06^GLU|·norm^··neg|·mg/dl·|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]2R|07|07^KET|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]CA[CR][LF]
+Device: [STX]2R|07|07^KET|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]CA[CR][LF] 
 Control Character: STX
 Clean Message: 2R|07|07^KET|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 	Tag No 2
@@ -213,7 +213,7 @@ Clean Message: 2R|07|07^KET|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]3R|08|08^UBG|·norm^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]29[CR][LF]
+Device: [STX]3R|08|08^UBG|·norm^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]29[CR][LF] 
 Control Character: STX
 Clean Message: 3R|08|08^UBG|·norm^··neg|·mg/dl·|||||20090116|LNorman^A
 	Tag No 3
@@ -234,7 +234,7 @@ Clean Message: 3R|08|08^UBG|·norm^··neg|·mg/dl·|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]4R|09|09^BIL|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]C3[CR][LF]
+Device: [STX]4R|09|09^BIL|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]C3[CR][LF] 
 Control Character: STX
 Clean Message: 4R|09|09^BIL|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 	Tag No 4
@@ -255,7 +255,7 @@ Clean Message: 4R|09|09^BIL|··neg^··neg|·mg/dl·|||||20090116|LNorman^A
 Host: ACK
 -----
 
-Device: [STX]5R|10|10^ERY|···50^···3+|·Ery/ul|||||20090116|LNorman^A[CR][ETX]A9[CR][LF]
+Device: [STX]5R|10|10^ERY|···50^···3+|·Ery/ul|||||20090116|LNorman^A[CR][ETX]A9[CR][LF] 
 Control Character: STX
 Clean Message: 5R|10|10^ERY|···50^···3+|·Ery/ul|||||20090116|LNorman^A
 	Tag No 5
@@ -291,7 +291,7 @@ Clean Message: 6C|10|I|*|I
 Host: ACK
 -----
 
-Device: [STX]7L|1|N[CR][ETX]0A[CR][LF]
+Device: [STX]7L|1|N[CR][ETX]0A[CR][LF] 
 Control Character: STX
 Clean Message: 7L|1|N
 	Tag No 7

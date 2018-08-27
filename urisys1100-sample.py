@@ -19,7 +19,7 @@ dummy_messages = (
     "[STX]3R|08|08^UBG|·norm^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]29[CR][LF]",
     "[STX]4R|09|09^BIL|··neg^··neg|·mg/dl·|||||20090116|LNorman^A[CR][ETX]C3[CR][LF]",
     "[STX]5R|10|10^ERY|···50^···3+|·Ery/ul|||||20090116|LNorman^A[CR][ETX]A9[CR][LF]",
-    "[STX]6C|10|I|*|I[CR][ETX]96[CR][LF] ",
+    "[STX]6C|10|I|*|I[CR][ETX]96[CR][LF]",
     "[STX]7L|1|N[CR][ETX]0A[CR][LF]",
     "[EOT]",
 )
