@@ -112,3 +112,4 @@ def message_construct():
 
 #print(message_construct())
 
+"4R|01|01^ SG|1.020|gcm3|||||20090116|LNorman^A"

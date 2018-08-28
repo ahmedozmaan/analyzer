@@ -1,14 +1,16 @@
 import serial
 import time
+from astm import Astm
 
-ser = serial.Serial(
-    port='COM1',\
-    baudrate=9600,\
-    parity=serial.PARITY_NONE,\
-    stopbits=serial.STOPBITS_ONE,\
-    bytesize=serial.EIGHTBITS,\
-        timeout=0)
+# ser = serial.Serial(
+#     port='COM1',\
+#     baudrate=9600,\
+#     parity=serial.PARITY_NONE,\
+#     stopbits=serial.STOPBITS_ONE,\
+#     bytesize=serial.EIGHTBITS,\
+#         timeout=0)
 
+ser = serial.Serial(port='/dev/ttys003',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
 		
 def printMsg():
 	return true
@@ -17,10 +19,10 @@ print("connected to: " + ser.portstr)
 print("\n")
 count=1
 
-STX = 2
-ENQ = 5
-
 seq = []
+
+astm = Astm("cobas411")
+# astm = Astm("urisys1100")
 
 def checkMessage(message):
 	data = message.encode()
@@ -29,36 +31,43 @@ def checkMessage(message):
 	lf = data.find(b'\x10')
 	cr = data.find(b'\x13')
 	crlf = lf + cr
-	text =  message[stx+1:-6]
+	text =  message[1:-6]
 	checksum = message[-4:-2]
-	print("Raw Message : {}".format(data))
-	print("Clear Message : {}".format(text))
-	print("Checksum : {}".format(checksum))
-	print("-------------\n")
+	print("\n----------------------------------------------------------------------------------------------------")
+	print("From device:")
+	#print("\tRaw Message : {}".format(data))
+	print("\tMessage : {}".format(text))
+	print("\tChecksum : {}".format(checksum))
+	astm.deviceSend(data)
 	time.sleep(1)
 	ser.write(b'\x06')
-	print("Send ACK\n")
+
+def checkRequest():
+	print('check if any request is required')
+	time.sleep(1)
+	print("check completed")
 
 while True:
 	for c in ser.read():
-		if chr(c) == '\x05':
-			print("Host inquiry")
-			print("---------------\n")
-			ser.write(b'\x06')
+		if chr(c) == '\x05': 							#ENQ
+			print("\n----------------------------------------------------------------------------------------------------")
+			print("Device ask for handshake")
+			print("Reply to Device : ACK\n")
+			ser.write(b'\x06')							#send ACK
+			break
+		
 		if chr(c) == '\x04':
-			print("End Of Transmission")
-			print("---------------\n")
+			print("\nEnd Of Transmission")
+			print("-------------------\n")
 			ser.write(b'\x06')
+			checkRequest()
 			break
 		else:
 			seq.append(chr(c))
 			joined_seq = ''.join(str(v) for v in seq)
-		
-			if chr(c) == '\x10':
-				#print("Line " + str(count) + ': ' + joined_seq)
+			if chr(c) == '\x10':						# if message ending with LF
 				seq = []
 				count += 1
 				checkMessage(joined_seq)
-				
 				break
 ser.close()

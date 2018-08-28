@@ -123,13 +123,32 @@ class Urisys1100:
         self.restful("POST",json_data)
     
     def checksum(self, message):
+        print("to calc: {}".format(message))
         sum_value = 16 #CR + ETX
         for i in message:
             sum_value = sum_value + ord(i)
             str_to_hex = hex(sum_value)
         return str_to_hex[-2:].upper()
 
-    def restful(self, method, json_data):
-        url = "http://localhost:8022/analyzer/header"
-        if(method=="POST"):
+    def check_request(self):
+        print("Info : Host is checking if any request required by this machine")
+        params = {
+            "device_id": self.device_id
+        }
+        response = self.restful("GET", params, "request")
+        time.sleep(4)
+        print("INFO : Checking done")
+        print(json.loads(response.text))
+    
+    def restful(self, method, json_data, route = "record"):
+        url = "http://localhost:8022/analyzer/{}".format(route)
+        response = ""
+        if method == "POST":
             requests.post(url, data=json.dumps(json_data))
+        if method == "PUT":
+            requests.put(url, data=json.dumps(json_data))
+        if method == "GET":
+            params = "?device_id={}".format(json_data["device_id"])
+            url = url + '?device-id={}'.format(params)
+            response = requests.get(url)
+        return response

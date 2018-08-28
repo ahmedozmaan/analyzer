@@ -11,15 +11,15 @@ class Astm:
     # NAK = b'\x21'
     # EOT = b'\x04'
 
-    def __init__(self,file):
-        self.STX = "[STX]"
-        self.ETX = "[ETX]"
-        self.ENQ = "[ENQ]"
-        self.ACK = "[ACK]"
-        self.LF  = "[LF]"
-        self.CR  = "[CR]"
-        self.NAK = "[NAK]"
-        self.EOT = "[EOT]"
+    def __init__(self, file):
+        self.STX = b"\x02"
+        self.ETX = b"\x03"
+        self.ENQ = b"\x05"
+        self.ACK = b"\x06"
+        self.LF  = b"\x10"
+        self.CR  = b"\x13"
+        self.NAK = b"\x21"
+        self.EOT = b"\x04"
 
         filename = file + "_log.txt"
         if(file == "cobas411"):
@@ -30,50 +30,42 @@ class Astm:
         self.f = open(filename, "w")
 
     def deviceSend(self, data):
-        if data == self.EOT:
+        print("ASTM Parser:")
+        if data[0] == 4: #EOT
             self.device.check_request()
             time.sleep(5)
             self.f.write("====END OF TRANSMISSION====")
             print("====END OF TRANSMISSION====")
-
         else:
-            if data == self.ENQ:
+            if data[0] == 5: #ENQ
                 self.f.write("====START OF TRANSMISSION====\r\n\n")
                 print("====START OF TRANSMISSION====\n")
-            self.f.write("Device: {} \n".format(data))
-            print("Device: {}".format(data))
+            self.f.write("Device: {} \n".format(data.decode()))
+            #print("\tDevice Send: {}".format(data))
             self.messageParser(data)
             self.f.write("Host: ACK\n")
-            self.f.write("-----\r\n\n")
-            
-            print("Host: ACK")
-            print("-----\n")        
-
-    def cleanMessage(self, message):
-        text = message
-        head, sep, tail = text.partition(self.CR)
-        return head[5:]
+            self.f.write("-----\r\n\n")    
 
     def messageParser(self, message):
-        control_character = message[:5]
-        self.f.write("Control Character: " + control_character[1:4] + "\n")
-        print("Control Character: " + control_character[1:4])
-        if control_character== self.STX:
-            messageString = self.cleanMessage(message)
+        control_character = message[0]
+        self.f.write("Control Character: " + chr(control_character) + "\n")
+        if control_character == 2:
+            messageString = message.decode()[1:-6]
             self.f.write("Clean Message: " + messageString + "\n")
-            print("Clean Message: " + messageString)
+            #print("\tClean Message: " + messageString)
             messageArray = self.messageSplitter(messageString)
             m = 0
             while m < len(messageArray):
                 if(m == 0):
                     self.recordType(messageArray[m],messageString)
                 pos = m + 1
-                info = "\t" + str(pos) + " => " + messageArray[m]
+                info = "\t\t" + str(pos) + " => " + messageArray[m]
                 self.f.write( info + "\n")
                 print(info)
                 m = m + 1
             self.f.write("\n")
-            cs_from_message = message[-10:-8]                           #change accordingly
+            cs_from_message = message[-4:-2].decode() 
+            print("\tChecksum: {}".format(cs_from_message))                          #change accordingly
             self.reply_message(cs_from_message, messageString)
         return control_character
 
@@ -108,9 +100,9 @@ class Astm:
         if record == "M":
             title = "Manufacturer"
             self.device.on_manufacturer(full_message)
-        self.f.write("\tTag No " + tagNumber + "\n")
-        self.f.write("\t" + title + " Record\n")
-        self.f.write("\t---------------------\n")
+        self.f.write("\t\tTag No " + tagNumber + "\n")
+        self.f.write("\t\t" + title + " Record\n")
+        self.f.write("\t\t---------------------\n")
 
         print("\tTag No " + tagNumber)
         print("\t" + title + " Record")
@@ -123,10 +115,10 @@ class Astm:
         cs_calc = self.device.checksum(message)
         reply = ""
         if cs == cs_calc:
-            reply = self.ACK
+            reply = "PASS"
         else:
-            reply = self.NAK
-        print("From msg: {} Checksum: {}".format(cs, cs_calc))
-        print("Reply to Device: {}".format(reply))
+            reply = "FAILED #bypass"
+        print("\tFrom Record: {} Checksum: {}".format(cs, cs_calc))
+        print("\tChecksum check result: {}".format(reply))
         return reply
         
