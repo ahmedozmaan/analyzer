@@ -87,6 +87,10 @@ while True:
 		dummy_messages = message_sample("cobas411")
 		print("Using Cobas 411 sampling data")
 		ser.write(dummy_messages[dummy_key])
+	elif cmd == "urisys1100":
+		dummy_messages = message_sample("urisys1100")
+		print("Using Urisys1100 sampling data")
+		ser.write(dummy_messages[dummy_key])
 	elif cmd == 'enq':
 		print("Enq....")
 		ser.write(dummy_messages[0])
