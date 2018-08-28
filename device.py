@@ -58,8 +58,14 @@ def message_sample(sample):
 
 ser = serial.Serial(port, baud, timeout=1)
 # open the serial port
+def commandMessage():
+	print("\nInstruction:")
+	print("\t type 'cobas411' for cobas sample data")
+	print("\t type 'urisys1100' for urisys sample data")
+
 if ser.isOpen():
 	print(ser.name + ' is open...')
+	commandMessage()
 
 while True:
 	time.sleep(3)
@@ -76,6 +82,7 @@ while True:
 		else:
 			print("End of dummy message")
 			dummy_key = 0
+			commandMessage()
 			cmd = input("\r\nEnter command or 'exit': ")
 	else:
 		cmd = input("\r\nEnter command or 'exit': ")
