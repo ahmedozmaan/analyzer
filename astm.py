@@ -50,7 +50,7 @@ class Astm:
         control_character = message[0]
         self.f.write("Control Character: " + chr(control_character) + "\n")
         if control_character == 2:
-            messageString = message.decode()[1:-6]
+            messageString = message.decode()[1:-6].replace("Â·"," ")
             self.f.write("Clean Message: " + messageString + "\n")
             #print("\tClean Message: " + messageString)
             messageArray = self.messageSplitter(messageString)

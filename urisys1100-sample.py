@@ -2,6 +2,9 @@
 from astm import Astm
 import time
 
+"4R|01|01^ SG|1.020|gcm3|||||20090116|LNorman^A"
+"5R|02|02^ pH|    7||||||20090116|LNorman^A"
+"5R|10|10^ERY|   50^   3+| Ery/ul|||||20090116|LNorman^A"
 ### machine sending sample
 
 dummy_messages = (

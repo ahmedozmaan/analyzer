@@ -90,7 +90,7 @@ def checksumCobas411(message):
 #checksumCobas411("5R|2|2^pH|7|||||||service")
 
 def checksumUrisys():
-    message = input("ASTM >> ");
+    message = input("ASTM >> ")
     sum_value = 16 #CR + ETX
     for i in message:
         sum_value = sum_value + ord(i)

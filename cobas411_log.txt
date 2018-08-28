@@ -1,0 +1,645 @@
+Device: 1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200F8 
+Control Character: 
+Clean Message: 1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200
+		Tag No 1
+		Message Header Record
+		---------------------
+		1 => 1H
+		2 => \^&
+		3 => 
+		4 => 
+		5 => URISYS1100^99305^SW5.31^INT
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => 
+		12 => P
+		13 => 
+		14 => 20090116184200
+
+Host: ACK
+-----
+
+Device: 2P|13F 
+Control Character: 
+Clean Message: 2P|1
+		Tag No 2
+		Patient Information Record
+		---------------------
+		1 => 2P
+		2 => 1
+
+Host: ACK
+-----
+
+Device: 3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||2009011618410000 
+Control Character: 
+Clean Message: 3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||20090116184100
+		Tag No 3
+		Test Order Record
+		---------------------
+		1 => 3O
+		2 => 1
+		3 => 
+		4 => 001^00036^C10
+		5 => Urinalysis^Incubated
+		6 => R
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => 
+		12 => X
+		13 => 
+		14 => 
+		15 => 20090116184100
+
+Host: ACK
+-----
+
+Device: 4R|01|01^Â·SG|1.020|gcm3|||||20090116|LNorman^ABB 
+Control Character: 
+Clean Message: 4R|01|01^ SG|1.020|gcm3|||||20090116|LNorman^A
+		Tag No 4
+		Result Record
+		---------------------
+		1 => 4R
+		2 => 01
+		3 => 01^ SG
+		4 => 1.020
+		5 => gcm3
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 5R|02|02^Â·pH|Â·Â·Â·Â·7||||||20090116|LNorman^A09 
+Control Character: 
+Clean Message: 5R|02|02^ pH|    7||||||20090116|LNorman^A
+		Tag No 5
+		Result Record
+		---------------------
+		1 => 5R
+		2 => 02
+		3 => 02^ pH
+		4 =>     7
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 6R|03|03^LEU|Â·Â·neg^Â·Â·neg|Â·Leu/ul|||||20090116|LNorman^A0B 
+Control Character: 
+Clean Message: 6R|03|03^LEU|  neg^  neg| Leu/ul|||||20090116|LNorman^A
+		Tag No 6
+		Result Record
+		---------------------
+		1 => 6R
+		2 => 03
+		3 => 03^LEU
+		4 =>   neg^  neg
+		5 =>  Leu/ul
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 7R|04|04^NIT|Â·Â·neg^Â·Â·neg||||||20090116|LNorman^ABD 
+Control Character: 
+Clean Message: 7R|04|04^NIT|  neg^  neg||||||20090116|LNorman^A
+		Tag No 7
+		Result Record
+		---------------------
+		1 => 7R
+		2 => 04
+		3 => 04^NIT
+		4 =>   neg^  neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 0R|05|05^PRO|Â·Â·neg^Â·Â·neg|Â·mg/dlÂ·|||||20090116|LNorman^AD1 
+Control Character: 
+Clean Message: 0R|05|05^PRO|  neg^  neg| mg/dl |||||20090116|LNorman^A
+		Tag No 0
+		Result Record
+		---------------------
+		1 => 0R
+		2 => 05
+		3 => 05^PRO
+		4 =>   neg^  neg
+		5 =>  mg/dl 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 1R|06|06^GLU|Â·norm^Â·Â·neg|Â·mg/dlÂ·|||||20090116|LNorman^A2D 
+Control Character: 
+Clean Message: 1R|06|06^GLU| norm^  neg| mg/dl |||||20090116|LNorman^A
+		Tag No 1
+		Result Record
+		---------------------
+		1 => 1R
+		2 => 06
+		3 => 06^GLU
+		4 =>  norm^  neg
+		5 =>  mg/dl 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 2R|07|07^KET|Â·Â·neg^Â·Â·neg|Â·mg/dlÂ·|||||20090116|LNorman^ACA 
+Control Character: 
+Clean Message: 2R|07|07^KET|  neg^  neg| mg/dl |||||20090116|LNorman^A
+		Tag No 2
+		Result Record
+		---------------------
+		1 => 2R
+		2 => 07
+		3 => 07^KET
+		4 =>   neg^  neg
+		5 =>  mg/dl 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 3R|08|08^UBG|Â·norm^Â·Â·neg|Â·mg/dlÂ·|||||20090116|LNorman^A29 
+Control Character: 
+Clean Message: 3R|08|08^UBG| norm^  neg| mg/dl |||||20090116|LNorman^A
+		Tag No 3
+		Result Record
+		---------------------
+		1 => 3R
+		2 => 08
+		3 => 08^UBG
+		4 =>  norm^  neg
+		5 =>  mg/dl 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 4R|09|09^BIL|Â·Â·neg^Â·Â·neg|Â·mg/dlÂ·|||||20090116|LNorman^AC3 
+Control Character: 
+Clean Message: 4R|09|09^BIL|  neg^  neg| mg/dl |||||20090116|LNorman^A
+		Tag No 4
+		Result Record
+		---------------------
+		1 => 4R
+		2 => 09
+		3 => 09^BIL
+		4 =>   neg^  neg
+		5 =>  mg/dl 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 5R|10|10^ERY|Â·Â·Â·50^Â·Â·Â·3+|Â·Ery/ul|||||20090116|LNorman^AA9 
+Control Character: 
+Clean Message: 5R|10|10^ERY|   50^   3+| Ery/ul|||||20090116|LNorman^A
+		Tag No 5
+		Result Record
+		---------------------
+		1 => 5R
+		2 => 10
+		3 => 10^ERY
+		4 =>    50^   3+
+		5 =>  Ery/ul
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 20090116
+		11 => LNorman^A
+
+Host: ACK
+-----
+
+Device: 6C|10|I|*|I96 
+Control Character: 
+Clean Message: 6C|10|I|*|I
+		Tag No 6
+		Comment Record
+		---------------------
+		1 => 6C
+		2 => 10
+		3 => I
+		4 => *
+		5 => I
+
+Host: ACK
+-----
+
+Device: 7L|1|N0A 
+Control Character: 
+Clean Message: 7L|1|N
+		Tag No 7
+		Message Termination Record
+		---------------------
+		1 => 7L
+		2 => 1
+		3 => N
+
+Host: ACK
+-----
+
+Device: 1H|\^&|||cobasÂ·uÂ·411^8^3.2.0.1001^Int|||||||P||2011031510182271 
+Control Character: 
+Clean Message: 1H|\^&|||cobas u 411^8^3.2.0.1001^Int|||||||P||20110315101822
+		Tag No 1
+		Message Header Record
+		---------------------
+		1 => 1H
+		2 => \^&
+		3 => 
+		4 => 
+		5 => cobas u 411^8^3.2.0.1001^Int
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => 
+		12 => P
+		13 => 
+		14 => 20110315101822
+
+Host: ACK
+-----
+
+Device: 2P|13F 
+Control Character: 
+Clean Message: 2P|1
+		Tag No 2
+		Patient Information Record
+		---------------------
+		1 => 2P
+		2 => 1
+
+Host: ACK
+-----
+
+Device: 3O|1|001|1^^^^SAMPLE||R||||||X|||20110315101754F0 
+Control Character: 
+Clean Message: 3O|1|001|1^^^^SAMPLE||R||||||X|||20110315101754
+		Tag No 3
+		Test Order Record
+		---------------------
+		1 => 3O
+		2 => 1
+		3 => 001
+		4 => 1^^^^SAMPLE
+		5 => 
+		6 => R
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => 
+		12 => X
+		13 => 
+		14 => 
+		15 => 20110315101754
+
+Host: ACK
+-----
+
+Device: 4R|1|1^SG|1.005|||||||serviceAD 
+Control Character: 
+Clean Message: 4R|1|1^SG|1.005|||||||service
+		Tag No 4
+		Result Record
+		---------------------
+		1 => 4R
+		2 => 1
+		3 => 1^SG
+		4 => 1.005
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 5R|2|2^pH|7|||||||service11 
+Control Character: 
+Clean Message: 5R|2|2^pH|7|||||||service
+		Tag No 5
+		Result Record
+		---------------------
+		1 => 5R
+		2 => 2
+		3 => 2^pH
+		4 => 7
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 6R|3|3^LEU|neg|||||||service45 
+Control Character: 
+Clean Message: 6R|3|3^LEU|neg|||||||service
+		Tag No 6
+		Result Record
+		---------------------
+		1 => 6R
+		2 => 3
+		3 => 3^LEU
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 7R|4|4^NIT|neg|||||||service4D 
+Control Character: 
+Clean Message: 7R|4|4^NIT|neg|||||||service
+		Tag No 7
+		Result Record
+		---------------------
+		1 => 7R
+		2 => 4
+		3 => 4^NIT
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 0R|5|5^PRO|neg|||||||service4E 
+Control Character: 
+Clean Message: 0R|5|5^PRO|neg|||||||service
+		Tag No 0
+		Result Record
+		---------------------
+		1 => 0R
+		2 => 5
+		3 => 5^PRO
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 1R|6|6^GLU|neg|||||||service48 
+Control Character: 
+Clean Message: 1R|6|6^GLU|neg|||||||service
+		Tag No 1
+		Result Record
+		---------------------
+		1 => 1R
+		2 => 6
+		3 => 6^GLU
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 2R|7|7^KET|neg|||||||service47 
+Control Character: 
+Clean Message: 2R|7|7^KET|neg|||||||service
+		Tag No 2
+		Result Record
+		---------------------
+		1 => 2R
+		2 => 7
+		3 => 7^KET
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 3R|8|8^UBG|neg|||||||service44 
+Control Character: 
+Clean Message: 3R|8|8^UBG|neg|||||||service
+		Tag No 3
+		Result Record
+		---------------------
+		1 => 3R
+		2 => 8
+		3 => 8^UBG
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 4R|9|9^BIL|neg|||||||service40 
+Control Character: 
+Clean Message: 4R|9|9^BIL|neg|||||||service
+		Tag No 4
+		Result Record
+		---------------------
+		1 => 4R
+		2 => 9
+		3 => 9^BIL
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 5R|10|10^ERY|neg|||||||serviceAA 
+Control Character: 
+Clean Message: 5R|10|10^ERY|neg|||||||service
+		Tag No 5
+		Result Record
+		---------------------
+		1 => 5R
+		2 => 10
+		3 => 10^ERY
+		4 => neg
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 6R|11|11^COL|p.yel|||||||service49 
+Control Character: 
+Clean Message: 6R|11|11^COL|p.yel|||||||service
+		Tag No 6
+		Result Record
+		---------------------
+		1 => 6R
+		2 => 11
+		3 => 11^COL
+		4 => p.yel
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 7R|12|12^CLA||||||||service56 
+Control Character: 
+Clean Message: 7R|12|12^CLA||||||||service
+		Tag No 7
+		Result Record
+		---------------------
+		1 => 7R
+		2 => 12
+		3 => 12^CLA
+		4 => 
+		5 => 
+		6 => 
+		7 => 
+		8 => 
+		9 => 
+		10 => 
+		11 => service
+
+Host: ACK
+-----
+
+Device: 0M|1|RC|||2001601|20111001|||8F 
+Control Character: 
+Clean Message: 0M|1|RC|||2001601|20111001|||
+		Tag No 0
+		Manufacturer Record
+		---------------------
+		1 => 0M
+		2 => 1
+		3 => RC
+		4 => 
+		5 => 
+		6 => 2001601
+		7 => 20111001
+		8 => 
+		9 => 
+		10 => 
+
+Host: ACK
+-----
+
+Device: 1L|1|N04 
+Control Character: 
+Clean Message: 1L|1|N
+		Tag No 1
+		Message Termination Record
+		---------------------
+		1 => 1L
+		2 => 1
+		3 => N
+
+Host: ACK
+-----
+
