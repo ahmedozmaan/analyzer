@@ -65,7 +65,7 @@ while True:
 	time.sleep(3)
 	oo = ser.read()
 	if oo:
-		print("\n----------------------------------------------------------------------------------------------------")
+		print("----------------------------------------------------------------------------------------------------")
 		print("Host replied: {}".format(oo))
 	
 	if oo == b'\x06':
@@ -85,11 +85,11 @@ while True:
 		exit()
 	elif cmd == "cobas411":
 		dummy_messages = message_sample("cobas411")
-		print("Using Cobas 411 sampling data")
+		print("\n\nUsing Cobas 411 sampling data")
 		ser.write(dummy_messages[dummy_key])
 	elif cmd == "urisys1100":
 		dummy_messages = message_sample("urisys1100")
-		print("Using Urisys1100 sampling data")
+		print("\n\nUsing Urisys1100 sampling data")
 		ser.write(dummy_messages[dummy_key])
 	elif cmd == 'enq':
 		print("Enq....")
