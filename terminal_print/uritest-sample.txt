@@ -1,0 +1,137 @@
+<3C<3C;E                1 29.08.18 13:24 SG1.000      PH6.5      LEU neg         neg NITneg  neg PRO neg         neg GLU neg         neg KET neg         neg UBG neg         neg BIL neg         neg ERY neg         neg                     3A<3C;E                1 29.08.18 13:24 SG1.000      PH6.5      LEU neg         neg NITneg  neg PRO neg         neg GLU neg         neg KET neg         neg UBG neg         neg BIL neg         neg ERY neg         neg                     3A:3A<3C<3C;E                1 29.08.18 13:24 SG1.000      PH6.5      LEU neg         neg NITneg  neg PRO neg         neg GLU neg         neg KET neg         neg UBG neg         neg BIL neg         neg ERY neg         neg                     3A<3C;E                1 29.08.18 13:24 SG1.000      PH6.5      LEU neg         neg NITneg  neg PRO neg         neg GLU neg         neg KET neg         neg UBG neg         neg BIL neg         neg ERY neg         neg                     3A:3AURISYS1100 URINALYSIS   
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+  UBG     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+  UBG     neg           
+  BIL     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+  UBG     neg           
+  BIL     neg           
+  ERY     neg           
+URISYS1100 URINALYSIS   
+Seq.No.     2           
+Pat.ID:                 
+29.08.2018         14:18
+*                       
+  SG    1.000           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+  UBG     neg           
+  BIL     neg           
+  ERY     neg           
+........................
+

@@ -1,16 +1,7 @@
-from devices import Urisys1100, Cobas411
+from devices import Urisys1100, Cobas411, Cobas311
 import time
 
 class Astm:
-    # STX = b'\x02'
-    # ETX = b'\x03'
-    # ENQ = b'\x05'
-    # ACK = b'\x06'
-    # LF  = b'\x10'
-    # CR  = b'\x13'
-    # NAK = b'\x21'
-    # EOT = b'\x04'
-
     def __init__(self, file):
         self.STX = b"\x02"
         self.ETX = b"\x03"
@@ -21,38 +12,28 @@ class Astm:
         self.NAK = b"\x21"
         self.EOT = b"\x04"
 
+        self.combine_message = b""
+        self.checksum_array = {}
+
         filename = file + "_log.txt"
         if(file == "cobas411"):
             self.device = Cobas411()
         if(file == "urisys1100"):
             self.device = Urisys1100()
+        if(file == 'cobas311'):
+            self.device = Cobas311()
 
         self.f = open(filename, "w")
 
     def deviceSend(self, data):
         print("ASTM Parser:")
-        if data[0] == 4: #EOT
-            self.device.check_request()
-            time.sleep(5)
-            self.f.write("====END OF TRANSMISSION====")
-            print("====END OF TRANSMISSION====")
-        else:
-            if data[0] == 5: #ENQ
-                self.f.write("====START OF TRANSMISSION====\r\n\n")
-                print("====START OF TRANSMISSION====\n")
-            self.f.write("Device: {} \n".format(data.decode()))
-            #print("\tDevice Send: {}".format(data))
-            self.messageParser(data)
-            self.f.write("Host: ACK\n")
-            self.f.write("-----\r\n\n")    
+        self.messageParser(data)
 
     def messageParser(self, message):
         control_character = message[0]
-        self.f.write("Control Character: " + chr(control_character) + "\n")
         if control_character == 2:
             messageString = message.decode()[1:-6].replace("Â·"," ")
-            self.f.write("Clean Message: " + messageString + "\n")
-            #print("\tClean Message: " + messageString)
+            print("\tClean message: {}".format(messageString))
             messageArray = self.messageSplitter(messageString)
             m = 0
             while m < len(messageArray):
@@ -60,14 +41,11 @@ class Astm:
                     self.recordType(messageArray[m],messageString)
                 pos = m + 1
                 info = "\t\t" + str(pos) + " => " + messageArray[m]
-                self.f.write( info + "\n")
                 print(info)
                 m = m + 1
-            self.f.write("\n")
-            cs_from_message = message[-4:-2].decode() 
-            print("\tChecksum: {}".format(cs_from_message))                          #change accordingly
-            self.reply_message(cs_from_message, messageString)
-        return control_character
+            # cs_from_message = message[-4:-2].decode() 
+            # print("\tChecksum: {}".format(cs_from_message))                          #change accordingly
+            # self.reply_message(cs_from_message, messageString)
 
     def messageSplitter(self,message):
         messageList = message.split("|")
@@ -76,7 +54,7 @@ class Astm:
     def recordType(self,field,full_message):
         record = field[-1:]
         tagNumber = field[:1]
-        title = "";
+        title = ""
         if record == "H":
             title = "Message Header"
             self.device.on_header(full_message)
@@ -121,4 +99,36 @@ class Astm:
         print("\tFrom Record: {} Checksum: {}".format(cs, cs_calc))
         print("\tChecksum check result: {}".format(reply))
         return reply
-        
+    
+    def checkRequest(self):
+        return self.device.check_request()
+
+    def cobas311Parser(self, message):
+        self.combine_message += message[1:-5]
+        self.checksum_array[chr(message[0])] = message[-4:-2] 
+
+    def finaldata(self):
+        self.device.transaction_code = int(round(time.time() * 1000))
+        output = self.combine_message
+        s = self.combine_message.split(b'\r')
+        i = 0
+        a = 1
+        b = 0
+        while i < len(s):
+            clean = s[i].decode().strip()
+            if clean != '':
+                print("\nMessage {}: {}".format(a, clean))
+                print("Transaction Code: {}".format(self.device.transaction_code))
+                firstLetter = str(b) + clean[0]
+                checksum = self.device.checksum(firstLetter + clean)
+                byteMessage = b'\x02' + clean.encode() + b'\x13' + b'\x03' + checksum.encode() + b'\x13' + b'\x10'  # construct as ASTM frame format
+                self.deviceSend(byteMessage)
+                a += 1
+                if b > 7:
+                    b = 0
+                else:
+                    b += 1
+            i += 1
+        self.device.transaction_code = ""
+        print("------------------------------------------------------------------------------------------------------------\n")
+        self.combine_message = b''

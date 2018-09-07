@@ -1,0 +1,19 @@
+URISYS1100 URINALYSIS   
+Seq.No.     5           
+Pat.ID:                 
+29.08.2018         14:56
+*                       
+  SG    1.005           
+  pH        7           
+  LEU     neg           
+* NIT      1+           
+  PRO     neg           
+  GLU     neg           
+  KET     neg           
+  UBG     neg           
+  BIL     neg           
+* ERY      4+           
+........................
+URISYS1100 URINALYSIS   
+Seq.No.     5           
+

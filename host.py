@@ -10,7 +10,8 @@ from astm import Astm
 #     bytesize=serial.EIGHTBITS,\
 #         timeout=0)
 
-ser = serial.Serial(port='/dev/ttys003',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
+ser = serial.Serial(port='/dev/ttys006',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
+# ser = serial.Serial(port='/dev/cu.wchusbserial1410',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
 		
 def printMsg():
 	return true
@@ -48,7 +49,9 @@ def checkRequest():
 	print("check completed")
 
 while True:
+	time.sleep(1)
 	for c in ser.read():
+		print(c)
 		if chr(c) == '\x05': 							#ENQ
 			print("\n----------------------------------------------------------------------------------------------------")
 			print("Device ask for handshake")
@@ -61,6 +64,12 @@ while True:
 			print("-------------------\n")
 			ser.write(b'\x06')
 			checkRequest()
+			break
+		
+		if chr(c) == '\x02':
+			r = ser.readline()
+			print("Sending: {}".format(r))
+			ser.write(b'\x02' + r)
 			break
 		else:
 			seq.append(chr(c))
