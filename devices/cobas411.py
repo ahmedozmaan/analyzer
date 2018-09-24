@@ -1,14 +1,16 @@
 import requests
 import json
 import time
+import config
 
 class Cobas411:
-
     def __init__(self):
-        self.device_id = "1"
+        self.device_id = "2"
         self.device_name = "COBAS 411"
+        self.params = {}
+        self.transaction_code = ""
         self
-
+ 
     def message_parser(self, data):
         message_list = data.split("|")
         return message_list
@@ -26,6 +28,7 @@ class Cobas411:
         
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"HEADER",
             "raw_message": data,
             "message_info": header_info
@@ -39,6 +42,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"PATIENT",
             "raw_message": data,
             "message_info": patient_info
@@ -67,6 +71,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"ORDER",
             "raw_message": data,
             "message_info": order_info
@@ -89,6 +94,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"RESULT",
             "raw_message": data,
             "message_info": result_type
@@ -105,6 +111,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"COMMENT",
             "raw_message": data,
             "message_info": comment_info
@@ -118,6 +125,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"MANUFACTURER",
             "raw_message": data,
             "message_info": manufacturer_info
@@ -153,6 +161,7 @@ class Cobas411:
         }
         json_data = {
             "device_id":self.device_id,
+            "transaction_code": self.transaction_code,
             "record_type":"REQUEST",
             "raw_message": data,
             "message_info":request_info
@@ -160,25 +169,26 @@ class Cobas411:
         self.restful("POST",json_data)
         self.restful("POST", machine_ask, 'request')
 
-    def check_request(self):
-        print("Info : Host is checking if any request required by this machine")
-        params = {
-            "device_id": self.device_id
+    def check_request(self, tocheck):
+        print("  HOST       : Host is checking request for  {}".format(tocheck['sample_id'].lstrip()))
+        p = {
+            "device_id": self.device_id,
+            "sample_id": tocheck['sample_id'],
+            "position": tocheck['position']
         }
-        response = self.restful("GET", params, "request")
+        query = "?device_id={}&sample_id={}".format(self.device_id, p['sample_id'])
+        response = self.restful("GET", query, "request")
         time.sleep(4)
-        print("INFO : Checking done")
-        print(json.loads(response.text))
+        return json.loads(response.text)
 
     def restful(self, method, json_data, route = "record"):
-        url = "http://localhost:8022/analyzer/{}".format(route)
+        url = "{}/{}".format(config.MIRTH_SERVER, route)
         response = ""
         if method == "POST":
             requests.post(url, data=json.dumps(json_data))
         if method == "PUT":
             requests.put(url, data=json.dumps(json_data))
         if method == "GET":
-            params = "?device_id={}".format(json_data["device_id"])
-            url = url + '?device-id={}'.format(params)
+            url = url + json_data
             response = requests.get(url)
         return response

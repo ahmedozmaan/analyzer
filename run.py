@@ -1,25 +1,11 @@
-import serial
-import time
-
-ENQ = b'\x05'
-ACK = b'\x06'
-STX = b'\x02'
-EOT = b'\x05'
-
-with serial.Serial('comport',9600,timeout=1) as ser:
-    while True:
-        control_character = ser.read() #read first bit
-        print("Device Send: {}".format(control_character))
-        reply = ""
-        if control_character == ENQ:    
-            ser.write(ACK)
-
-        if control_character == STX:
-            received = ser.readline()
-            
-            ser.write(ACK)
-        
-        if control_character == EOT
-            ser.write(ACK)
 
 
+sample_id = '91101800034'
+i = 0
+spacer = ""
+while i < (22 - len(sample_id)):
+    spacer += " "
+    i += 1
+full_sample_id = spacer + sample_id
+print("Full Sample Id: {}".format(full_sample_id))
+print("Full Sample Id Len: {}".format(len(full_sample_id)))

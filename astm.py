@@ -100,12 +100,16 @@ class Astm:
         print("\tChecksum check result: {}".format(reply))
         return reply
     
-    def checkRequest(self):
-        return self.device.check_request()
+    def checkRequest(self, tocheck):
+        return self.device.check_request(tocheck)
 
     def cobas311Parser(self, message):
         self.combine_message += message[1:-5]
         self.checksum_array[chr(message[0])] = message[-4:-2] 
+    
+    def cobas411Parser(self, message):
+        self.combine_message += message[1:-5]
+        self.checksum_array[chr(message[0])] = message[-4:-2]
 
     def finaldata(self):
         self.device.transaction_code = int(round(time.time() * 1000))
@@ -130,5 +134,13 @@ class Astm:
                     b += 1
             i += 1
         self.device.transaction_code = ""
-        print("------------------------------------------------------------------------------------------------------------\n")
+        print("---------------------------------------------------------------------")
         self.combine_message = b''
+
+    def checksum_cobas(self, message):
+        i = 0
+        sum_value = 0
+        while i < (len(message)):
+            sum_value = sum_value + message[i]
+            i += 1
+        return hex(sum_value)[-2:].upper()

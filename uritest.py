@@ -1,41 +1,34 @@
 import serial
 import time
 from astm import Astm
+import config
 import os
 import requests
 import json
 
-ser = serial.Serial(port='/dev/cu.wchusbserial1410',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
+ser = serial.Serial(port=config.URYSIS_1100_COMPORT, 
+                    baudrate=9600, parity=serial.PARITY_NONE,
+                    stopbits=serial.STOPBITS_ONE, 
+                    bytesize=serial.EIGHTBITS, timeout=0)
 
-d = open('testuni-1.txt','w')
-def printMsg():
-	return true
-	
-print("connected to: " + ser.portstr)
+d = open('testuni-1.txt', 'w')
 print("\n")
-count=1
+print("- HOST STARTED ------------------------------------------------------")
+print("  COMMUNICATION PORT: " + ser.portstr)
+print("---------------------------------------------------------------------")
+print("\n")
+count = 1
 seq = []
-
-# def replybak():
-# 	print("reply back")
-# 	ser.write(b'\x02')
-# 	ser.write(b'\x3E')
-# 	ser.write(b'\x03')
-# 	ser.write(b'\x33')
-# 	ser.write(b'\x45')
-# 	ser.write(b'\x0D')
-# 	time.sleep(5)
-# 	print('reply end')
-
 number = 1
 result = {}
 
+
 def cleanResult(result):
-	return result[8:13].strip()
+    return result[8:13].strip()
 
 while True:
 	c = ser.readline()
-	if c != b'': 
+	if c != b'':
 		if c != b'\r':
 			d.write(str(number) + " : " + c.decode())
 			result[number] = c.decode()
@@ -61,9 +54,10 @@ while True:
 				}
 				print("-------------------------")
 				print(testResult)
-				url = "http://localhost:8022/analyzer/record"
+				url = config.MIRTH_SERVER + "/record"
 				json_data = {
 					"device_id":1,
+                    "transaction_code": int(round(time.time() * 1000)),
 					"record_type":"RESULT",
 					"raw_message": "",
 					"message_info":testResult
@@ -73,3 +67,12 @@ while True:
 				number = 1
 				result = {}
 ser.close()
+
+
+# while True:
+#     for c in ser.read():
+#         if chr(c) == '\x02':
+#             r = ser.readline()
+#             print('\r {}'.format(r.decode()))
+
+# ser.close()

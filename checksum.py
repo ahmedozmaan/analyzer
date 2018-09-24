@@ -142,7 +142,11 @@ def message_construct():
 def checksum_cobas():
     # message = b'1H|\\^&|||cobas-e411^1|||||host|RSUPL^BATCH|P|1\rP|1\rO|1|880912-08-5309|3104^0001^2^^S1^SC|^^^117^1\\^^^900^1\\^^^880^1\\^^^136^1|R||20180821095503||||N||||1|||||||20180821104134|||F\rR|1|^^^117/1/not|<2.00|IU/l||LL||F||ADMIN|||E1\rC|1|I|27|I\rR|2|^\x173F\r\n'
     # message = b'1H|\\^&|||host^1|||||H7600|RSREQ^BATCH|P|1\rQ|1|^^PCCC2                 ^4030^30064^064^^SC^QC^SC||ALL||||||||F\rL|1|N\x0381\r\n'
-    message = b'1H|\\^&|||host^1|||||H7600|RSREQ^BATCH|P|1\x0drQ|1|^^     2* RCPA  (109-04)0^50031^031^^S1^SC||ALL||||||||F\x0dL|1|N\x0d8D\x0d\x0a'
+    # message = b'1H|\\^&|||host^1|||||H7600|RSREQ^BATCH|P|1\x0dQ|1|^^     2* RCPA  (109-04)0^50031^031^^S1^SC||ALL||||||||F\x0dL|1|N\x0d8D\x0d\x0a'
+    # message = b'1H|\\^&|||host^1|||||H7600|RSREQ^REAL|P|1\x0dQ|1|^^        820204-10-5060^50018^018^^S1^SC||ALL||||||||F\x0dL|1|N\x0d6F\x0d\x0a'
+    #ni jadi message = b'1H|\\^&|||host^1|||||H7600|TSDWN^REPLY|P|1\x0dP|1\x0dO|1|           91101800034|0^50021^021^^S1^SC|^^^717^|R||||||A||||1||||||||||O\rL|1|N\x0d\x0379\x0d\x0a'
+    # message = b'1H|\\^&|||host^1|||||cobas-e411|TSDWN^REPLY|P|1\x0dP|1\x0dO|1|91101800034|3668^@8^1^^S1^SC|^^^150^\\^^^140^|R||||||A||||1||||||||||O\rL|1|N\x0d\x0359\x0d\x0a'
+    message = b"1H|\\^&|||host^1|||||H7600|TSDWN^REPLY|P|1\x0dP|1\x0dO|1|91101800034|3^50002^002^^S1^SC|^^^708^\\^^^435^\\^^^552^\\^^^781^\\^^^961^|R||||||A||||1||||||||||O\x0dL|1|N\x0d\x0379\x0d\x0a"
     i = 0
     sum_value = 0
     while i < (len(message)-4):
@@ -150,6 +154,8 @@ def checksum_cobas():
         # sum_value = sum_value + ord(message[i])
         sum_value = sum_value + message[i]
         i += 1
+    cs = hex(sum_value)[-2:].upper()
+    print(cs)
     print("Sum Value: {}".format(sum_value))
     print("Sum Value to Hex: {}".format(hex(sum_value)))
     print("Checksum: {}".format(message[-4:-2].decode()))

@@ -1,0 +1,251 @@
+{
+    "cobas311": {
+        "B004": {
+            "transaction_code": "1537501643418",
+            "device_id": "3",
+            "lis_lab_id": "91031800053",
+            "lab_unit_code": "SP",
+            "lab_test_code": "39",
+            "result": [
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "717",
+                    "rhis_test_code": "717",
+                    "test_name": "GLUC3",
+                    "measurement_value": "0.57",
+                    "value": "0.57 mmol/l"
+                }
+            ]
+        },
+        "B005": {
+            "transaction_code": "1535962817631",
+            "device_id": "3",
+            "lis_lab_id": "91011800056",
+            "lab_unit_code": "91",
+            "lab_test_code": "01",
+            "result": [
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "798",
+                    "rhis_test_code": "798",
+                    "test_name": "CHO2I",
+                    "measurement_value": "3.92",
+                    "value": "3.92 mmol/l"
+                },
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "435",
+                    "rhis_test_code": "435",
+                    "test_name": "HDLC3",
+                    "measurement_value": "0.90",
+                    "value": "0.90 mmol/l"
+                },
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "717",
+                    "rhis_test_code": "717",
+                    "test_name": "GLUC3",
+                    "measurement_value": "12.11",
+                    "value": "12.11 mmol/l"
+                },
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "552",
+                    "rhis_test_code": "552",
+                    "test_name": "LCLC3",
+                    "measurement_value": "1.83",
+                    "value": "1.83 mmol/l"
+                },
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "781",
+                    "rhis_test_code": "781",
+                    "test_name": "TRIGL",
+                    "measurement_value": "1.12",
+                    "value": "1.12 mmol/l"
+                },
+                {
+                    "unit": "",
+                    "cobas311_test_code": "961",
+                    "rhis_test_code": "961",
+                    "test_name": "RATIO",
+                    "measurement_value": "4",
+                    "value": "4 "
+                }
+            ]
+        },
+        "B003": {
+            "transaction_code": "1537501655422",
+            "device_id": "3",
+            "lis_lab_id": "91101800057",
+            "lab_unit_code": "91",
+            "lab_test_code": "10",
+            "result": [
+                {
+                    "unit": "mmol/l",
+                    "cobas311_test_code": "798",
+                    "rhis_test_code": "798",
+                    "test_name": "CHO2I",
+                    "measurement_value": "6.39",
+                    "value": "6.39 mmol/l"
+                }
+            ]
+        }
+    },
+    "cobas411": {
+        "M007": {
+            "transaction_code": "1537503546175",
+            "device_id": "2",
+            "lis_lab_id": "97081800015",
+            "lab_unit_code": "97",
+            "lab_test_code": "08",
+            "result": [
+                {
+                    "unit": "IU/l",
+                    "cobas411_test_code": "117",
+                    "rhis_test_code": "117",
+                    "test_name": "A-HBSII 0",
+                    "measurement_value": "<2.00",
+                    "value": "<2.00 IU/l",
+                    "flag": "LL",
+                    "result_status": "F"
+                },
+                {
+                    "unit": "COI",
+                    "cobas411_test_code": "900",
+                    "rhis_test_code": "900",
+                    "test_name": "HBSAG-II 0",
+                    "measurement_value": "-1^0.404",
+                    "value": "-1^0.404 COI",
+                    "flag": "N",
+                    "result_status": "F"
+                },
+                {
+                    "unit": "COI",
+                    "cobas411_test_code": "880",
+                    "rhis_test_code": "880",
+                    "test_name": "HIVCOMPT 0",
+                    "measurement_value": "-1^0.302",
+                    "value": "-1^0.302 COI",
+                    "flag": "N",
+                    "result_status": "F"
+                },
+                {
+                    "unit": "COI",
+                    "cobas411_test_code": "136",
+                    "rhis_test_code": "136",
+                    "test_name": "Syphilis 0",
+                    "measurement_value": "-1^0.114",
+                    "value": "-1^0.114 COI",
+                    "flag": "N",
+                    "result_status": "F"
+                }
+            ]
+        },
+        "F007": {
+            "transaction_code": "1537519642807",
+            "device_id": "2",
+            "lis_lab_id": "95011800028",
+            "lab_unit_code": "95",
+            "lab_test_code": "01",
+            "result": [
+                {
+                    "unit": "mIU/ml",
+                    "cobas411_test_code": "150",
+                    "rhis_test_code": "150",
+                    "test_name": "FSH 0",
+                    "measurement_value": "7.68",
+                    "value": "7.68 mIU/ml",
+                    "flag": "N",
+                    "result_status": "F"
+                }
+            ]
+        },
+        "F011": {
+            "transaction_code": "1537519684802",
+            "device_id": "2",
+            "lis_lab_id": "95141800032",
+            "lab_unit_code": "95",
+            "lab_test_code": "14",
+            "result": [
+                {
+                    "unit": "nmol/l",
+                    "cobas411_test_code": "138",
+                    "rhis_test_code": "138",
+                    "test_name": "PROG III",
+                    "measurement_value": "0.421",
+                    "value": "0.421 nmol/l",
+                    "flag": "N",
+                    "result_status": "F"
+                }
+            ]
+        }
+    },
+    "urysis1100": {
+        "B018": {
+            "transaction_code": "1535946732908",
+            "device_id": "1",
+            "lis_lab_id": "91021800059",
+            "lab_unit_code": "91",
+            "lab_test_code": "02",
+            "result": [
+                [
+                    {
+                        "test_name": "pH",
+                        "urisys_test_code": "2",
+                        "rhis_test_code": "2",
+                        "measurement_value": "7"
+                    },
+                    {
+                        "test_name": "BIL",
+                        "urisys_test_code": "9",
+                        "rhis_test_code": "9",
+                        "measurement_value": "neg"
+                    },
+                    {
+                        "test_name": "ERY",
+                        "urisys_test_code": "10",
+                        "rhis_test_code": "10",
+                        "measurement_value": "4+"
+                    },
+                    {
+                        "test_name": "GLU",
+                        "urisys_test_code": "6",
+                        "rhis_test_code": "6",
+                        "measurement_value": "neg"
+                    },
+                    {
+                        "test_name": "KET",
+                        "urisys_test_code": "7",
+                        "rhis_test_code": "7",
+                        "measurement_value": "neg"
+                    },
+                    {
+                        "test_name": "LEU",
+                        "urisys_test_code": "3",
+                        "rhis_test_code": "3",
+                        "measurement_value": "neg"
+                    },
+                    {
+                        "test_name": "NIT",
+                        "urisys_test_code": "4",
+                        "rhis_test_code": "4",
+                        "measurement_value": "1+"
+                    },
+                    {
+                        "test_name": "PRO",
+                        "urisys_test_code": "5",
+                        "rhis_test_code": "5",
+                        "measurement_value": "neg"
+                    },
+                    {
+                        "test_name": "UBG",
+                        "urisys_test_code": "8",
+                        "rhis_test_code": "8",
+                        "measurement_value": "neg"
+                    }
+                ]
+            ]
+        }
+    }
+}

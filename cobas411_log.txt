@@ -1,0 +1,27 @@
+		Tag No H
+		Message Header Record
+		---------------------
+		Tag No P
+		Patient Information Record
+		---------------------
+		Tag No O
+		Test Order Record
+		---------------------
+		Tag No R
+		Result Record
+		---------------------
+		Tag No C
+		Comment Record
+		---------------------
+		Tag No R
+		Result Record
+		---------------------
+		Tag No R
+		Result Record
+		---------------------
+		Tag No R
+		Result Record
+		---------------------
+		Tag No L
+		Message Termination Record
+		---------------------

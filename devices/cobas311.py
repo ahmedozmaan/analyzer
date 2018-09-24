@@ -1,6 +1,7 @@
 import requests
 import json
 import time
+import config
 
 class Cobas311:
 
@@ -176,21 +177,20 @@ class Cobas311:
         self.restful("POST",json_data)
         self.restful("POST", machine_ask, 'request')
 
-    def check_request(self):
-        print("Info : Host is checking if any request required by this machine")
+    def check_request(self, tocheck):
+        print("  HOST       : Host is checking request for  {}".format(tocheck['sample_id'].lstrip()))
         p = {
             "device_id": self.device_id,
-            "sample_id": self.params.get("sample_id"),
-            "sequence_no": self.params.get('sequence_no'),
-            "position_no": self.params.get('position_no')
+            "sample_id": tocheck['sample_id'].lstrip(),
+            "position": tocheck['position']
         }
-        query = "?device_id={}&sample_id={}&sequence_no={}&position_no={}".format(p.get('device_id'), p.get('sample_id'), p.get('sequence_no'), p.get('position_no'))
+        query = "?device_id={}&sample_id={}".format(p.get('device_id'), p.get('sample_id'))
         response = self.restful("GET", query, "request")
-        time.sleep(4)
+        time.sleep(2)
         return json.loads(response.text)
 
     def restful(self, method, json_data, route = "record"):
-        url = "http://localhost:8022/analyzer/{}".format(route)
+        url = "{}/{}".format(config.MIRTH_SERVER, route)
         response = ""
         if method == "POST":
             requests.post(url, data=json.dumps(json_data))

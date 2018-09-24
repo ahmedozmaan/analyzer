@@ -14,7 +14,7 @@ def printMsg():
 print("connected to: " + ser.portstr)
 print("\n")
 
-astm = Astm("cobas311")
+astm = Astm("cobas411")
 
 block_message = b''
 
@@ -35,14 +35,14 @@ def checkRequest():
 def reply_order():
 	ser.write(b'\x05')
 	time.sleep(3)
-	message = b"\x02H|\\^&|||host^1|||||H7600|TSDWN^REPLY|P|1\rP|1\rO|1|^^   ^3^50002^002^^S1^SC|^^^717^||ALL||||||||O\rL|1|N\r\n"
+	message = b"\x02H|\\^&|||host^1|||||cobas-e411^1|TSDWN^REPLY|P|1\rP|1\rO|1|^^   ^3^50002^002^^S1^SC|^^^150^\\^^^140^||ALL||||||||O\rL|1|N\r\n"
 	ser.write(message)
 
 def sending_reply(response):
 	ser.write(b'\x05')
 	time.sleep(3)
 	print("Send Reply from instrument inquiry")
-	reply = b"\x021H|\\^&|||host^1|||||H7600|TSDWN^REPLY|P|1\x0dP|1\x0dO|1|           91101800034|0^50021^021^^S1^SC|^^^717^|R||||||A||||1||||||||||O\rL|1|N\x0d\x0379\x0d\x0a"
+	reply = b"\x021H|\\^&|||host^1|||||cobas-e411|TSDWN^REPLY|P|1\x0dP|1\x0dO|1|91101800034|3668^@8^1^^S1^SC|^^^150^\\^^^140^|R||||||A||||1||||||||||O\rL|1|N\x0d\x0359\x0d\x0a"
 	print("SEND ORDER TO INSTRUMENT: {}".format(reply))
 	
 	ser.write(reply)

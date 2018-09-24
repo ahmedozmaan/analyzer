@@ -3,7 +3,7 @@ import serial
 import time
  
 #port = "COM2"
-port = '/dev/ttys002'
+port = '/dev/ttys005'
 baud = 9600
 
 dummy_key = 0 
@@ -13,7 +13,7 @@ def message_sample(sample):
 	if sample == "urisys1100":
 		data = (
 			b'\x05',
-			b'\x02'+ "1H|\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200".encode() + b'\x13'  + b'\x03' + b"F8" + b'\x13'  + b'\x10' ,
+			b'\x02'+ "1H|\\^&|||URISYS1100^99305^SW5.31^INT|||||||P||20090116184200".encode() + b'\x13'  + b'\x03' + b"F8" + b'\x13'  + b'\x10' ,
 			b'\x02'+ "2P|1".encode() + b'\x13'  + b'\x03' +b"3F" + b'\x13'  + b'\x10' ,
 			b'\x02'+ "3O|1||001^00036^C10|Urinalysis^Incubated|R||||||X|||20090116184100".encode() + b'\x13'  + b'\x03' + b"00" + b'\x13' + b'\x10' ,
 			b'\x02'+ "4R|01|01^·SG|1.020|gcm3|||||20090116|LNorman^A".encode() + b'\x13' + b'\x03' + b"BB" + b'\x13' + b'\x10' ,
@@ -33,7 +33,7 @@ def message_sample(sample):
 	if sample == "cobas411":
 		data = (
 			b'\x05',
-			b'\x02' + "1H|\^&|||cobas·u·411^8^3.2.0.1001^Int|||||||P||20110315101822".encode() + b'\x13' + b'\x03' + b"71" + b'\x13' + b'\x10',
+			b'\x02' + "1H|\\^&|||cobas·u·411^8^3.2.0.1001^Int|||||||P||20110315101822".encode() + b'\x13' + b'\x03' + b"71" + b'\x13' + b'\x10',
 			b'\x02' + "2P|1".encode() + b'\x13' + b'\x03' + b"3F" + b'\x13' + b'\x10',
 			b'\x02' + "3O|1|001|1^^^^SAMPLE||R||||||X|||20110315101754".encode() + b'\x13' + b'\x03' + b"F0" + b'\x13' + b'\x10',
 			b'\x02' + "4R|1|1^SG|1.005|||||||service".encode() + b'\x13' + b'\x03' + b"AD" + b'\x13' + b'\x10',
@@ -55,7 +55,7 @@ def message_sample(sample):
 	if sample == "cobas311":
 		data = (
 			b'\x05',
-			b'\x02' + "1H|\^&|||cobas u 311^1|||||||P||20110315101822".encode() + b'\x13' + b'\x03' + b"7" + b"1" + b'\x13' + b'\x10',
+			b'\x02' + "1H|\\^&|||cobas u 311^1|||||||P||20110315101822".encode() + b'\x13' + b'\x03' + b"7" + b"1" + b'\x13' + b'\x10',
 			b'\x02' + "2P|1".encode() + b'\x13' + b'\x03' + b"71" + b'\x13' + b'\x10',
 			b'\x02' + "3O|000010|442^50001^001^^S1^SC|^^^672^|R||||||N||||1|||||||20051220104418|||F".encode() + b'\x13' + b'\x03' + b"7" + b"1" + b'\x13' + b'\x10',
 			b'\x02' + "4R|1|^^^400/|-1^0.303|umol/l||N||F||admin|||P1".encode() + b'\x13' + b'\x03' + b"7" + b"1" + b'\x13' + b'\x10',
@@ -63,12 +63,18 @@ def message_sample(sample):
 			b'\x02' + "6L|1|N".encode() + b'\x13' + b'\x03' + b"7" + b"1" + b'\x13' + b'\x10',
 			b'\x04'
 		)
+	# if sample == "cobas311_realtime":
+	# 	data = (
+	# 		b'\x05',
+	# 		b'\x02' + b"1H|\\^&|||cobas u 311^1|||||host|TSREQ^REAL|P|1".encode() + b'\x13' + b'\x03' + b"6" + b"A" + b'\x13' + b'\x10',
+	# 		b'\x02' + "2Q|1|^^00002^3^50002^002^^S1^SC||ALL||||||||O".encode() + b'\x03' + b"7" + b"4" + b'\x13' + b'\x10',
+	# 		b'\x02' + "3L|1|N".encode() + b'\x13' + b'\x03' + b"0" + b"6" + b'\x13' + b'\x10',
+	# 		b'\x04'
+	# 	)
 	if sample == "cobas311_realtime":
 		data = (
 			b'\x05',
-			b'\x02' + "1H|\^&|||cobas u 311^1|||||host|TSREQ^REAL|P|1".encode() + b'\x13' + b'\x03' + b"6" + b"A" + b'\x13' + b'\x10',
-			b'\x02' + "2Q|1|^^00002^3^50002^002^^S1^SC||ALL||||||||O".encode() + b'\x03' + b"7" + b"4" + b'\x13' + b'\x10',
-			b'\x02' + "3L|1|N".encode() + b'\x13' + b'\x03' + b"0" + b"6" + b'\x13' + b'\x10',
+			b"\x021H|\\^&|||H7600^1|||||host|TSREQ^REAL|P|1\x0dQ|1|^^00002^3^50002^002^^S1^SC||ALL||||||||O\x0dL|1|N\x0d76\x0d\x0a",
 			b'\x04'
 		)
 	if sample == "cobas311_sendresult":
