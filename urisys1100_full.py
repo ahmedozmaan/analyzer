@@ -26,7 +26,6 @@ while True:
     c = ser.readline()
     if c != b'':
         if c != b'\r':
-            d.write(str(number) + " : " + c.decode())
             result[number] = c.decode()
             print("Number : {}".format(number))
             number = number + 1
