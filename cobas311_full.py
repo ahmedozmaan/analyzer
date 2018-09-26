@@ -6,7 +6,11 @@ import config
 
 ser = serial.Serial(port=config.COBAS_311_COMPORT,baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
 
-print("communication is ready, connected to: " + ser.portstr)
+
+print("\n")
+print("- HOST STARTED ------------------------------------------------------")
+print("  COMMUNICATION PORT: " + ser.portstr)
+print("---------------------------------------------------------------------")
 print("\n")
 
 astm = Astm("cobas311")
