@@ -51,6 +51,7 @@ while True:
                 print("-------------------------")
                 print(testResult)
                 url = config.MIRTH_SERVER + "/record"
+				print("url : {}".format(url))
                 json_data = {
 					"device_id": 1,
                                         "transaction_code": int(round(time.time() * 1000)),
