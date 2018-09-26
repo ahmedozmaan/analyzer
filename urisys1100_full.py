@@ -24,14 +24,14 @@ def cleanResult(result):
     return result[8:14].strip()
 
 while True:
-	c = ser.readline()
-	if c != b'':
-		if c != b'\r':
-			d.write(str(number) + " : " + c.decode())
-			result[number] = c.decode()
+    c = ser.readline()
+    if c != b'':
+        if c != b'\r':
+            d.write(str(number) + " : " + c.decode())
+            result[number] = c.decode()
             print("Number : {}".format(number))
-			number = number + 1
-			if number == 17:
+            number = number + 1
+            if number == 17:
 				testResult = {
 					"device_name": result.get(1)[:23].strip(),
 					"sequence_no": result.get(2)[10:13].strip(),
@@ -65,12 +65,3 @@ while True:
 				number = 1
 				result = {}
 ser.close()
-
-
-# while True:
-#     for c in ser.read():
-#         if chr(c) == '\x02':
-#             r = ser.readline()
-#             print('\r {}'.format(r.decode()))
-
-# ser.close()
