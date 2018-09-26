@@ -25,13 +25,12 @@ def cleanResult(result):
 
 while True:
 	c = ser.readline()
-	print("----".format(c))
 	if c != b'':
 		if c != b'\r':
 			d.write(str(number) + " : " + c.decode())
 			result[number] = c.decode()
+            print("Number : {}".format(number))
 			number = number + 1
-			print("Number : {}".format(number))
 			if number == 17:
 				testResult = {
 					"device_name": result.get(1)[:23].strip(),
