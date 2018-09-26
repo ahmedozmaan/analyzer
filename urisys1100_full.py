@@ -8,7 +8,6 @@ import json
 
 ser = serial.Serial(port=config.URYSIS_1100_COMPORT, baudrate=9600, timeout=1)
 
-d = open('testuni-1.txt', 'w')
 print("\n")
 print("- HOST STARTED ------------------------------------------------------")
 print("  COMMUNICATION PORT: " + ser.portstr)
