@@ -24,7 +24,7 @@ result = {}
 
 def cleanResult(result):
 	print("Result: {}".format(result))
-    return result[8:13].strip()
+	return result[8:13].strip()
 
 while True:
 	c = ser.readline()
