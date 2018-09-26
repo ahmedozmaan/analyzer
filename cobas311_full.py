@@ -2,9 +2,9 @@ import serial
 import time
 import json
 from astm import Astm
+import config 
 
-# ser = serial.Serial(port='/dev/ttys006', baudrate=9600, parity=serial.PARITY_NONE, stopbits=serial.STOPBITS_ONE, bytesize=serial.EIGHTBITS, timeout=0)
-ser = serial.Serial(port='/dev/cu.wchusbserial1410',baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
+ser = serial.Serial(port=config.COBAS_311_COMPORT,baudrate=9600,parity=serial.PARITY_NONE,stopbits=serial.STOPBITS_ONE,bytesize=serial.EIGHTBITS,timeout=0)
 
 print("communication is ready, connected to: " + ser.portstr)
 print("\n")
