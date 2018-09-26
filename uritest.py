@@ -22,7 +22,6 @@ seq = []
 number = 1
 result = {}
 
-
 def cleanResult(result):
     return result[8:13].strip()
 
@@ -30,6 +29,7 @@ while True:
 	c = ser.readline()
 	if c != b'':
 		if c != b'\r':
+			print("-- {}".format(number))
 			d.write(str(number) + " : " + c.decode())
 			result[number] = c.decode()
 			number = number +1
