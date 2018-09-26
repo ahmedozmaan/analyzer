@@ -32,7 +32,7 @@ while True:
             print("Number : {}".format(number))
             number = number + 1
             if number == 17:
-				testResult = {
+                testResult = {
 					"device_name": result.get(1)[:23].strip(),
 					"sequence_no": result.get(2)[10:13].strip(),
 					"patient_id": result.get(3)[11:23],
@@ -50,18 +50,18 @@ while True:
 						"ERY": cleanResult(result.get(15))
 					}
 				}
-				print("-------------------------")
-				print(testResult)
-				url = config.MIRTH_SERVER + "/record"
-				json_data = {
+                print("-------------------------")
+                print(testResult)
+                url = config.MIRTH_SERVER + "/record"
+                json_data = {
 					"device_id": 1,
                                         "transaction_code": int(round(time.time() * 1000)),
 					"record_type": "RESULT",
 					"raw_message": "",
 					"message_info": testResult
 				}
-				requests.post(url, data=json.dumps(json_data))
-				print("-------------------------")
-				number = 1
-				result = {}
+                requests.post(url, data=json.dumps(json_data))
+                print("-------------------------")
+                number = 1
+                result = {}
 ser.close()
