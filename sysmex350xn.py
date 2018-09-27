@@ -79,13 +79,13 @@ def sending_reply(response):
     order_sent = True
     answer = {}
     # time.sleep(1)
-    print("--EOT----------------------------------------------------------------------------------------------------")
+    print("--EOT----------------------------------------------------------------")
 
 while True:
     for c in ser.read():
 
         if chr(c) == '\x05':  # ENQ
-            print("--ENQ FROM INSTRUMENT-----------------------------------------------------------------------------------------------")
+            print("--ENQ FROM INSTRUMENT------------------------------------------------")
             print("-> Reply to Instrument : ACK")
             ser.write(b'\x06')  # send ACK
             time.sleep(1)
@@ -109,7 +109,7 @@ while True:
 
         if chr(c) == '\x04':
             print("\n")
-            print("--END OF TRANSMISSION--------------------------------------------------------------------------------------------------\n")
+            print("--END OF TRANSMISSION------------------------------------------------\n")
             if len(answer) > 0:
                 checkRequest()
                 time.sleep(3)
