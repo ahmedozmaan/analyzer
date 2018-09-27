@@ -1,4 +1,4 @@
-from devices import Urisys1100, Cobas411, Cobas311
+from devices import Urisys1100, Cobas411, Cobas311, Sysmex350xn
 import time
 
 class Astm:
@@ -22,6 +22,8 @@ class Astm:
             self.device = Urisys1100()
         if(file == 'cobas311'):
             self.device = Cobas311()
+        if(file == 'sysmex350xn'):
+            self.device = Sysmex350xn()
 
         self.f = open(filename, "w")
 
