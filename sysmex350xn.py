@@ -40,7 +40,7 @@ def checkReadLine(message):
     if len(answer) == 0:
         astm.cobas311Parser(message)
 
-    time.sleep(2)
+    time.sleep(1)
     ser.write(b'\x06')
 
 def checkRequest():
