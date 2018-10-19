@@ -6,6 +6,8 @@ import os
 import requests
 import json
 
+from os import system
+system("title SYSMEX KX 21")
 
 ser = serial.Serial(port=config.SYSMEX_KX21_COMPORT, baudrate=9600, timeout=1)
 
