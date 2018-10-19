@@ -72,7 +72,7 @@ def handleresult(msg):
     list_of_results = [list_param,flagging,value]
     for a in zip(*list_of_results):
             print(*a)
-            
+        
     print ('\n') 
 
     testdata = {
@@ -105,7 +105,6 @@ def handleresult(msg):
 #serial start
 #--------------------------------------------------------------------------------------------
 
-f = open("sysmex_KX21.txt", "a")
 print("\n")
 print("- HOST STARTED ------------------------------------------------------")
 print("  COMMUNICATION PORT: " + ser.portstr)
@@ -116,25 +115,45 @@ print("\n")
 while True:
         c = ser.readline()
         if c != b'':
+            print("- RECEIVED RESULT ---------------------------------------------------\n")
             print("Read: {}".format(c))
             message = c[1:-1].decode('utf-8')
-                       
+
+            f = open("sysmex_KX21.txt", "a") 
+     
             #result
             testResult = handleresult(message)
-            print("-------------------------")
             print(testResult)
                                  
             url = config.MIRTH_SERVER + "/record"
-            json_data = {   "device_id":1,
-                            "transaction_code": int(round(time.time() * 1000)),
+            transaction_code = int(round(time.time() * 1000))
+            json_data = {   "device_id":5,
+                            "transaction_code": transaction_code,
                             "record_type":"RESULT",
-                            "raw_message": "",
+                            "raw_message": message,
                             "message_info":testResult
                         }
-            requests.post(url, data=json.dumps(json_data))
-	    #print("-------------------------")
-	    #testResult = {}
             
+            astm_order = {
+                "device_id": 5,
+                "transaction_code": transaction_code,
+                "record_type":"ORDER",
+                "raw_message":message,
+                "message_info": {
+                    "specimen_id": testResult['patient_id']
+                    }
+                }
+            
+            requests.post(url, data=json.dumps(astm_order))
+            requests.post(url, data=json.dumps(json_data))
+            f.write("ASTM ORDER: {}".format(astm_order))
+            f.write("RESULT DATA: {}".format(json_data))
+            f.write('\n')
+            f.write('\n')
+            f.close()
+            print("\n")
+            print("- COMPLETED ---------------------------------------------------------")
+            print('\r\n')
             
 f.close()                                 
 ser.close()
