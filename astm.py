@@ -1,5 +1,8 @@
 from devices import Urisys1100, Cobas411, Cobas311, Sysmex350xn
 import time
+import requests
+import json
+import config
 
 class Astm:
     def __init__(self, file):
@@ -135,6 +138,7 @@ class Astm:
                 else:
                     b += 1
             i += 1
+        self.sendResultToRhis(self.device.transaction_code)
         self.device.transaction_code = ""
         print("---------------------------------------------------------------------")
         self.combine_message = b''
@@ -146,3 +150,10 @@ class Astm:
             sum_value = sum_value + message[i]
             i += 1
         return hex(sum_value)[-2:].upper()
+
+    def sendResultToRhis(self, transaction_code):
+        data = {
+            "transaction_code": transaction_code
+        }
+        self.device.restful("POST", data, "result-to-rhis")
+        print("Send Result to RHIS transaction code : {}".format(transaction_code))
