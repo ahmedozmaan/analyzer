@@ -150,7 +150,7 @@ while True:
                 "record_type":"ORDER",
                 "raw_message":message,
                 "message_info": {
-                    "specimen_id": "960" + testResult['patient_id']
+                    "specimen_id": testResult['sample_id']
                     }
                 }
         
