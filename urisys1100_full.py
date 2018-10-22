@@ -6,6 +6,9 @@ import os
 import requests
 import json
 
+from os import system
+system("title ROCHE URISYS 1100")
+
 ser = serial.Serial(port=config.URYSIS_1100_COMPORT, baudrate=9600, timeout=1)
 
 print("\n")
