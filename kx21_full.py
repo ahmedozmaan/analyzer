@@ -106,7 +106,10 @@ def handleresult(msg):
                 "RDW": {'value': value[13],"flag" : flagging[13]}, 
                 "PDW": {'value': value[14],"flag" : flagging[14]}, 
                 "MPV:": {'value': value[15],"flag" : flagging[15]},
-                "P-LCR:": {'value': value[16],"flag" : flagging[16]}, 
+                "P-LCR:": {'value': value[16],"flag" : flagging[16]},
+                "MONO": {'value': "","flag" : ""},
+                "EO": {'value': "","flag" : ""},
+                "BASO": {'value': "","flag" : ""},
                 }   
 		    }                     
                            
