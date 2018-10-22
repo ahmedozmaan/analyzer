@@ -6,6 +6,8 @@ import os
 import requests
 import json
 
+from os import system
+system("title SYSMEX KX 21")
 
 ser = serial.Serial(port=config.SYSMEX_KX21_COMPORT, baudrate=9600, timeout=1)
 
@@ -148,6 +150,11 @@ while True:
             requests.post(url, data=json.dumps(json_data))
             f.write("ASTM ORDER: {}".format(astm_order))
             f.write("RESULT DATA: {}".format(json_data))
+            data_to_send = {
+                "transaction_code": transaction_code
+            }
+            requests.post(config.MIRTH_SERVER + "/result-to-rhis", data=json.dumps(data_to_send))
+            print("Send Result to RHIS transaction code : {}".format(transaction_code))
             f.write('\n')
             f.write('\n')
             f.close()
