@@ -1,4 +1,4 @@
-from devices import Urisys1100, Cobas411, Cobas311, Sysmex350xn
+from devices import Urisys1100, Cobas411, Cobas311, SysmexXn350
 import time
 import requests
 import json
@@ -113,6 +113,10 @@ class Astm:
         self.checksum_array[chr(message[0])] = message[-4:-2] 
     
     def cobas411Parser(self, message):
+        self.combine_message += message[1:-5]
+        self.checksum_array[chr(message[0])] = message[-4:-2]
+    
+    def sysmex350Parser(self, message):
         self.combine_message += message[1:-5]
         self.checksum_array[chr(message[0])] = message[-4:-2]
 
