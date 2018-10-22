@@ -156,7 +156,7 @@ while True:
                 }
             }
             
-            requests.post(url, data=json.dumps(astm_order_01)
+            requests.post(url, data=json.dumps(astm_order_01))
             requests.post(url, data=json.dumps(astm_order_02))
 
             requests.post(url, data=json.dumps(json_data))
