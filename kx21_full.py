@@ -77,9 +77,17 @@ def handleresult(msg):
         
     print ('\n') 
 
+    testcode_raw = msg[16:22]
+    testcode = testcode_raw[0]
+    sequence = testcode_raw[1:]
+
+    full_testcode = "96" + "0" + testcode + get_date[0] + sequence
+
     testdata = {
 		    "device_name": 'Sysmex KX21',
-		    "patient_id": msg[14:22],
+		    "patient_id": full_testcode,
+            "raw_sample": testcode_raw,
+            "sample_id": full_testcode,
 		    "test_date": get_testdate,
 		    "result": {
 				"WBC": {'value': value[0],"flag" : flagging[0]},                                                  
