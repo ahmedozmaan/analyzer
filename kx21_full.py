@@ -136,19 +136,33 @@ while True:
                             "message_info":testResult
                         }
             
-            astm_order = {
+            astm_order_01 = {
                 "device_id": 5,
                 "transaction_code": transaction_code,
                 "record_type":"ORDER",
                 "raw_message":message,
                 "message_info": {
-                    "specimen_id": testResult['patient_id']
+                    "specimen_id": "9601" + testResult['patient_id']
                     }
                 }
             
-            requests.post(url, data=json.dumps(astm_order))
+            astm_order_02 = {
+                "device_id": 5,
+                "transaction_code": transaction_code,
+                "record_type": "ORDER",
+                "raw_message": message,
+                "message_info": {
+                    "specimen_id": "9602" + testResult['patient_id']
+                }
+            }
+            
+            requests.post(url, data=json.dumps(astm_order_01)
+            requests.post(url, data=json.dumps(astm_order_02))
+
             requests.post(url, data=json.dumps(json_data))
-            f.write("ASTM ORDER: {}".format(astm_order))
+            f.write("ASTM ORDER: {}".format(astm_order_01))
+            f.write("ASTM ORDER: {}".format(astm_order_02))
+
             f.write("RESULT DATA: {}".format(json_data))
             data_to_send = {
                 "transaction_code": transaction_code
