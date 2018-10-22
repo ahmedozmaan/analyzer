@@ -79,7 +79,7 @@ def handleresult(msg):
 
     testdata = {
 		    "device_name": 'Sysmex KX21',
-		    "patient_id": msg[11:22],
+		    "patient_id": msg[14:22],
 		    "test_date": get_testdate,
 		    "result": {
 				"WBC": {'value': value[0],"flag" : flagging[0]},                                                  
@@ -136,32 +136,20 @@ while True:
                             "message_info":testResult
                         }
             
-            astm_order_01 = {
+            astm_order = {
                 "device_id": 5,
                 "transaction_code": transaction_code,
                 "record_type":"ORDER",
                 "raw_message":message,
                 "message_info": {
-                    "specimen_id": "9601" + testResult['patient_id']
+                    "specimen_id": "960" + testResult['patient_id']
                     }
                 }
-            
-            astm_order_02 = {
-                "device_id": 5,
-                "transaction_code": transaction_code,
-                "record_type": "ORDER",
-                "raw_message": message,
-                "message_info": {
-                    "specimen_id": "9602" + testResult['patient_id']
-                }
-            }
-            
-            requests.post(url, data=json.dumps(astm_order_01))
-            requests.post(url, data=json.dumps(astm_order_02))
+        
+            requests.post(url, data=json.dumps(astm_order))
 
             requests.post(url, data=json.dumps(json_data))
-            f.write("ASTM ORDER: {}".format(astm_order_01))
-            f.write("ASTM ORDER: {}".format(astm_order_02))
+            f.write("ASTM ORDER: {}".format(astm_order))
 
             f.write("RESULT DATA: {}".format(json_data))
             data_to_send = {
