@@ -26,7 +26,7 @@ class Astm:
         if(file == 'cobas311'):
             self.device = Cobas311()
         if(file == 'sysmex350xn'):
-            self.device = Sysmex350xn()
+            self.device = SysmexXn350()
 
         self.f = open(filename, "w")
 
