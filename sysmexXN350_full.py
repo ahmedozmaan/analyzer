@@ -15,7 +15,7 @@ print("   COMMUNICATION PORT: " + ser.portstr)
 print("---------------------------------------------------------------------")
 print("\n")
 
-astm = Astm("sysXn350")
+astm = Astm("sysmex350xn")
 block_message = b''
 answer = {}
 count = 0
@@ -40,7 +40,7 @@ def checkReadLine(message):
             }
         h = h + 1
     if len(answer) == 0:
-        astm.sysXn350Parser(message)
+        astm.sysmex350Parser(message)
 
     time.sleep(2)
     print("  HOST       : ACK")
